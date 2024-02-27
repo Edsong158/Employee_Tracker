@@ -1,16 +1,12 @@
 const mysql = require('mysql2');
-const inquirer = require('inquirer');
 
-// Create a connection to the database
+// Create connectio to our sql database
+
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'your_username',
-  password: 'your_password',
-  database: 'your_database_name'
-});
+    host: 'localhost',
+    user: 'root',
+    database: 'employee_management_db'
+  });
 
-// Connect to the database
-connection.connect(err => {
-  if (err) throw err;
-  console.log('Connected to the database.');
-});
+
+  module.exports = connection;

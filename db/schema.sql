@@ -1,3 +1,4 @@
+-- Active: 1708728049218@@127.0.0.1@3306
 -- department
 -- id: INT PRIMARY KEY
 -- name: VARCHAR(30) to hold department name
@@ -13,7 +14,7 @@
 -- role_id: INT to hold reference to employee role
 -- manager_id: INT to hold reference to another employee that is the manager of the current employee (null if the employee has no manager)
 
-DROP DATABASE IF EXIST employee_management_db;
+DROP DATABASE IF EXISTS employee_management_db;
 
 CREATE DATABASE employee_management_db;
 
@@ -27,10 +28,10 @@ CREATE TABLE departments (
 CREATE TABLE roles (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
-    salary VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL,
     department_id INT NOT NULL,
     FOREIGN KEY ( department_id)
-    REFERENCES department (id) 
+    REFERENCES departments (id) 
     ON DELETE CASCADE
 );
 
@@ -41,7 +42,7 @@ CREATE TABLE employee (
     role_id INT NOT NULL,
     manager_id INT,
     FOREIGN KEY (role_id)
-    REFERENCES role (id)
+    REFERENCES roles (id)
     ON DELETE CASCADE,
     FOREIGN KEY (manager_id)
     REFERENCES employee (id)
